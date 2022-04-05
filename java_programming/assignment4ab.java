@@ -1,4 +1,4 @@
-package java;
+package java_programming;
 //interface
 
 
@@ -17,7 +17,7 @@ class twowheeler implements motorbike,cycle{
     }
 }
 
-class assignment3bb{
+class assignment4ab{
     public static void main(String arg[]){
         twowheeler ride=new twowheeler();
         ride.total_distance();

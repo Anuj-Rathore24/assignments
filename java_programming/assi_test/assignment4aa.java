@@ -1,4 +1,4 @@
-package java;
+package java_programming.assi_test;
 import java.util.*;                                                                                                                         
 abstract class instrument{
    abstract String play();
@@ -22,7 +22,7 @@ class flute extends instrument{
 }
 
 
-public class assigment3b {
+public class assignment4aa {
     public static void main(String arg[]) {
         Scanner input = new Scanner(System.in);
         piano new_piano=new piano();
