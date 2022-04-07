@@ -1,4 +1,4 @@
-package java_programming.assi_test;
+package assi_test;
 import java.util.*;                                                                                                                         
 abstract class instrument{
    abstract String play();

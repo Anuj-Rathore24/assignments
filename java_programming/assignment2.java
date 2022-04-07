@@ -1,4 +1,4 @@
-package java_programming;
+// package java_programming;
 import java.util.*;
 
 class stud {
