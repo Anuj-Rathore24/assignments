@@ -1,7 +1,8 @@
+// gcc assignment2.c -o outfile -lgomp
 #include<stdio.h>
 #include<stdlib.h>
 #include<omp.h>
-#define lenght 100000
+#define lenght 50000
 int main(){
     int veca[lenght],vecb[lenght],vecc[lenght],i;
     for (int i = 0; i < lenght; i++)
@@ -20,7 +21,7 @@ int main(){
     printf("With serialized method :%lf \n",end-start);
 
     start=omp_get_wtime();
-    #pragma omp parallel for private(i)
+    #pragma omp parallel
 
     for (int i = 0; i < lenght; i++)
     {
