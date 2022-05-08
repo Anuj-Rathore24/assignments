@@ -1,4 +1,4 @@
-// gcc assignment2.c -o outfile -lgomp
+// gcc assignment2.c -o outfile -fopenmp
 #include<stdio.h>
 #include<stdlib.h>
 #include<omp.h>
