@@ -15,8 +15,8 @@ public class assignment12_part1 {
 	 * mysql-subprotocol
 	 * 172.20.35.20-hostname
 	 */
-	static  String USER="root";
-	static String PASWD="Philanthropist$420";
+	static  String USER="mysql";
+	static String PASWD="your_password";
 	public static void main(String args[])
 	{
 		int ch,ans;

@@ -15,13 +15,13 @@ public final class App {
 
 
 	// private static final Readable InputStream = null;
-	static  String URL="jdbc:mysql://localhost/assignment";	//final constant optional
+	static  String URL="jdbc:mysql://localhost:3306/";	//final constant optional
 	/* jdbc-protocol that is used
 	 * mysql-subprotocol
 	 * 172.20.35.20-hostname
 	 */
-	static  String USER="root";
-	static String PASWD="Philanthropist$420";
+	static  String USER="mysql";
+	static String PASWD="";
 	public static void main(String args[])
 	{
 		int ch,ans;
