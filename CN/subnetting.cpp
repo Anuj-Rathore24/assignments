@@ -8,6 +8,8 @@ int main()
     cout << "\nEnter the IP address: ";
     cin >> ip;
     int i = 0;
+    
+    //extracting 1st octat from ipaddress
     while (ip[i] != '.')
         i++;
     string clas = ip.substr(0, i);
@@ -15,6 +17,8 @@ int main()
     int ip_1 = 0;
     a >> ip_1;
     i = 0;
+    
+    //checking class of ipaddress {A<=127,B>=192,C>=224}
     if (128 <= ip_1)
         i++;
     if (ip_1 >= 192)
@@ -22,17 +26,24 @@ int main()
     if (ip_1 >= 224)
         i++;
     int cl = i;
+
+    //getting maximum number of subnets according to class
     int max = pow(pow(2, 8), 3 - i);
     int subnet = 0;
     cout << "\nEnter the no. of subnet max(" << max - 2 << "):";
     cin >> subnet;
+
+    //error handling
     while (subnet > max - 2)
     {
         cout << "\nEnter a valid no. of subnets: ";
         cin >> subnet;
     }
+
     char c = 'A' + i;
     cout << "\nClass of IP address is " << c;
+
+    //default subnet
     int default_sub[4];
     int j = 0;
     for (j = 0; j <= i; j++)
@@ -44,6 +55,8 @@ int main()
     {
         cout << default_sub[j] << ".";
     }
+
+    //subnet mask
     int subnet_mask[4];
     for (j = 0; j < 4; j++)
     {
@@ -72,6 +85,8 @@ int main()
     int k = 1;
     cout << endl;
     int add = (256 / subnet);
+
+    //subnetting
     while (k <= sub2)
     {
         cout << "\nSubent " << k << " Range = ";
