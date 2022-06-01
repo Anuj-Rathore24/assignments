@@ -13,12 +13,14 @@ int main()
     while (ip[i] != '.')
         i++;
     string clas = ip.substr(0, i);
+
+    //converting first octet to integer
     stringstream a(clas);
     int ip_1 = 0;
     a >> ip_1;
     i = 0;
     
-    //checking class of ipaddress {A<=127,B>=192,C>=224}
+    //checking class of ipaddress {A<=127,C>=192,191>B>127}
     if (128 <= ip_1)
         i++;
     if (ip_1 >= 192)
@@ -30,6 +32,7 @@ int main()
     //getting maximum number of subnets according to class
     int max = pow(pow(2, 8), 3 - i);
     int subnet = 0;
+    
     cout << "\nEnter the no. of subnet max(" << max - 2 << "):";
     cin >> subnet;
 
