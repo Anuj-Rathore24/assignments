@@ -28,11 +28,8 @@ public class assignment4b {
 
                         FileWriter fr = new FileWriter("data.txt",true);
                         BufferedWriter writer = new BufferedWriter(fr);
-                        writer.write("\n");
-                        writer.write(name);
-                        writer.write(" ");
-                        writer.write(Integer.toString(roll_no));
-                        writer.write("   ");
+                        writer.write("\n"+name+" "+Integer.toString(roll_no)+" ");
+    
                         for (int j = 0; j < subs.length; j++) {
 
                             writer.write(Integer.toString(subs[j]));
