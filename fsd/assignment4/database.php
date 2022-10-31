@@ -1,72 +1,107 @@
-<?php
 
-
-//for connecting with database
-
-
-function OpenCon()
-{
-    $dbhost = "";
-    $dbuser = "";
-    $dbpass = "";
-    $db = "fsdAssignment";
-
-    try{
-        $conn = new mysqli($dbhost, $dbuser, $dbpass, $db)or throw_ex("Wrong Information");
-        return $conn;
-    }catch(Exception $e){
-        return $e;
+    <?php
+    
+    function insertRecord($prn, $name, $rollNo)
+    {
+        global $dbhost, $dbuser, $dbpass, $db;
+        try {
+            $conn = new mysqli($dbhost, $dbuser, $dbpass, $db) or throw_ex("error");
+            $sql = "insert into userDatabase values($prn,'$name','$rollNo');";
+            try {
+                $conn->query($sql) or throw_ex(mysqli_error($conn));
+                $result = "Inserted Successfully!!";
+            } catch (Exception $e) {
+                $result="error while inserting in database!";
+            }
+            echo '<script type ="text/JavaScript">';
+            echo "alert('$result')";
+            echo '</script>';
+            CloseCon($conn);
+        } catch (Exception $e) {
+            echo '<script type ="text/JavaScript">';
+            echo 'alert("error while accessing database!")';
+            echo '</script>';
+        }
     }
-}
-
-//for inserting records in mysql
-function insertRecord($conn,$prn,$name,$rollNo)
-{
-    $sql = "insert into userDatabase values($prn,'$name','$rollNo');";
-    try {
-        $result = $conn->query($sql) or throw_ex(mysqli_error($conn));
-    } catch (Exception $e) {
-        return $e;
+    function deleteRecord($prn)
+    {
+        global $dbhost, $dbuser, $dbpass, $db;
+        try {
+            $conn = new mysqli($dbhost, $dbuser, $dbpass, $db) or throw_ex("error");
+            $sql = "delete from userDatabase where prn=$prn";
+            try {
+                $conn->query($sql) or throw_ex(mysqli_error($conn));
+                $result="Record deleted!";
+            } catch (Exception $e) {
+                $result="error while deleting from database!";
+            }
+            echo '<script type ="text/JavaScript">';
+            echo "alert('$result')";
+            echo '</script>';
+            CloseCon($conn);
+        } catch (Exception $e) {
+            echo '<script type ="text/JavaScript">';
+            echo 'alert("error while accessing database!")';
+            echo '</script>';
+        }
     }
-    return $result;
-}
+    function updateRecord($prn, $name, $rollNo)
+    {
 
-//for deleting records from table
-function deleteValue($conn,$prn)
-{
-    $sql = "delete from userDatabase where prn=$prn";
-    try {
-        $result = $conn->query($sql) or throw_ex(mysqli_error($conn));
-    } catch (Exception $e) {
-        return $e;
+        global $dbhost, $dbuser, $dbpass, $db;
+        try {
+            $conn = new mysqli($dbhost, $dbuser, $dbpass, $db) or throw_ex("error");
+            $sql = "update userDatabase set name='$name', rollNo='$rollNo' where prn=$prn";
+            try {
+                $conn->query($sql) or throw_ex(mysqli_error($conn));
+                $result = "Updated Record Successfully!";
+            } catch (Exception $e) {
+               $result="Error While Updating the record!";
+            }
+            echo '<script type ="text/JavaScript">';
+            echo "alert('$result')";
+            echo '</script>';
+            CloseCon($conn);
+        } catch (Exception $e) {
+            echo '<script type ="text/JavaScript">';
+            echo 'alert("error while accessing database!")';
+            echo '</script>';
+        }
+
+        return '$result';
     }
-    return $result;
-}
+    function showRecords()
+    {
+        global $dbhost, $dbuser, $dbpass, $db;
+        try {
+            $conn = new mysqli($dbhost, $dbuser, $dbpass, $db) or throw_ex("error");
+            $sql = "select * from userDatabase";
+            $result = $conn->query($sql) or throw_ex(mysqli_error($conn));
+            if ($result->num_rows > 0) {
+                $show = "";
+                while ($row = $result->fetch_assoc()) {
+                    $show .= "prn: " . $row["prn"] . " - Name: " . $row["name"] . " -RollNo:" . $row["rollNo"] . "</br>";
+                }
+                echo $show;
+            } else {
+                echo "No Records!";
+            }
 
-// for updating records in table
-function updateRecord($conn,$prn,$name,$rollNo)
-{
-    $sql = "update userDatabase set name=$name, rollNo=$rollNo where prn=$prn";
-    try {
-        $result = $conn->query($sql) or throw_ex(mysqli_error($conn));
-    } catch (Exception $e) {
-        return $e;
+            CloseCon($conn);
+        } catch (Exception $e) {
+            echo '<script type ="text/JavaScript">';
+            echo 'alert("error while accessing database!")';
+            echo '</script>';
+        }
     }
-    return $result;
-}
-
-//for exception handling 
-function throw_ex($er)
-{
-    throw new Exception($er);
-}
-
-//for closing connection with mysql
-function CloseCon($conn)
-{
-    $conn->close();
-}
-?>
+    function throw_ex($er)
+    {
+        throw new Exception($er);
+    }
 
 
-
+    function CloseCon($conn)
+    {
+        $conn->close();
+    }
+    ?>
