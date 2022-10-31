@@ -1,0 +1,61 @@
+html, body{min-height:100%;}
+body {
+     overflow: auto;
+     height: 200vh
+     ; 
+}
+h1{
+    color: #72aa52 !important;
+}
+#MainContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.carousalContainer{
+  margin-top: 2vw;
+  width: 50%;
+}
+#secondContainer{
+  margin-top: 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.secondContainerPara{
+  padding: 2vw;
+}
+.secondContainerparaContainer{
+background-color: #d3d3f000;
+padding: 3vw;
+border: 1px solid black;
+border-radius: 20px;
+box-shadow: 0px 0px 5px 1px;
+}
+p{
+  font-style: italic;
+  font-size: 18px;
+}
+.columnClass{
+    padding: 1vw;
+    border-radius: 1vw;
+    border: 1px solid rgb(59, 124, 115);
+    margin: 1vw;
+    color: #72aa52;
+}
+#formContainer{
+    display: flex;
+    border: 1px solid #3c3838;
+    flex-direction: column;
+    border-radius: 20px;
+    margin: 2vw;
+    padding: 20vw;
+    align-items: center;
+}
+.form-control{
+    background-color: #0099001f !important;
+    text-align: center;
+}
